@@ -1,0 +1,80 @@
+;
+; KMDF_hello_world.inf
+;
+
+[Version]
+Signature="$WINDOWS NT$"
+Class=System ; TODO: specify appropriate Class
+ClassGuid={4d36e97d-e325-11ce-bfc1-08002be10318} ; TODO: specify appropriate ClassGuid
+Provider=%ManufacturerName%
+CatalogFile=KMDF_hello_world.cat
+DriverVer = 01/06/2023,14.36.16.405
+PnpLockdown=1
+
+[DestinationDirs]
+DefaultDestDir = 12
+KMDF_hello_world_Device_CoInstaller_CopyFiles = 11
+
+[SourceDisksNames]
+1 = %DiskName%,,,""
+
+[SourceDisksFiles]
+KMDF_hello_world.sys  = 1,,
+;
+
+
+;*****************************************
+; Install Section
+;*****************************************
+
+[Manufacturer]
+%ManufacturerName%=Standard,NTamd64
+
+[Standard.NTamd64]
+%KMDF_hello_world.DeviceDesc%=KMDF_hello_world_Device, Root\KMDF_hello_world ; TODO: edit hw-id
+
+[KMDF_hello_world_Device.NT]
+CopyFiles=Drivers_Dir
+
+[Drivers_Dir]
+KMDF_hello_world.sys
+
+;-------------- Service installation
+[KMDF_hello_world_Device.NT.Services]
+AddService = KMDF_hello_world,%SPSVCINST_ASSOCSERVICE%, KMDF_hello_world_Service_Inst
+
+; -------------- KMDF_hello_world driver install sections
+[KMDF_hello_world_Service_Inst]
+DisplayName    = %KMDF_hello_world.SVCDESC%
+ServiceType    = 1               ; SERVICE_KERNEL_DRIVER
+StartType      = 3               ; SERVICE_DEMAND_START
+ErrorControl   = 1               ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %12%\KMDF_hello_world.sys
+
+;
+;--- KMDF_hello_world_Device Coinstaller installation ------
+;
+
+[KMDF_hello_world_Device.NT.CoInstallers]
+AddReg=KMDF_hello_world_Device_CoInstaller_AddReg
+CopyFiles=KMDF_hello_world_Device_CoInstaller_CopyFiles
+
+[KMDF_hello_world_Device_CoInstaller_AddReg]
+;
+
+
+[KMDF_hello_world_Device_CoInstaller_CopyFiles]
+;
+
+
+[KMDF_hello_world_Device.NT.Wdf]
+KmdfService =  KMDF_hello_world, KMDF_hello_world_wdfsect
+[KMDF_hello_world_wdfsect]
+KmdfLibraryVersion = 1.15
+
+[Strings]
+SPSVCINST_ASSOCSERVICE= 0x00000002
+ManufacturerName="<Your manufacturer name>" ;TODO: Replace with your manufacturer name
+DiskName = "KMDF_hello_world Installation Disk"
+KMDF_hello_world.DeviceDesc = "KMDF_hello_world Device"
+KMDF_hello_world.SVCDESC = "KMDF_hello_world Service"

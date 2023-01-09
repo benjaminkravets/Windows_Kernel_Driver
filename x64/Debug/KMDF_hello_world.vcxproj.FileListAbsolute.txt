@@ -1,0 +1,2 @@
+C:\Users\bakra\Desktop\KMDF_hello_world\x64\Debug\KMDF_hello_world.sys
+C:\Users\bakra\Desktop\Shared\KMDF_hello_world\x64\Debug\KMDF_hello_world.sys

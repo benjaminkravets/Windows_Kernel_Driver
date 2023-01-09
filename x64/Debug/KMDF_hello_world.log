@@ -1,0 +1,23 @@
+﻿  Building 'KMDF_hello_world' with toolset 'WindowsKernelModeDriver10.0' and the 'Universal' target platform.
+  Stamping x64\Debug\KMDF_hello_world.inf
+  Stamping [Version] section with DriverVer=01/06/2023,14.36.16.405
+  driver.c
+  KMDF_hello_world.vcxproj -> C:\Users\bakra\Desktop\Shared\KMDF_hello_world\x64\Debug\KMDF_hello_world.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\bakra\Desktop\Shared\KMDF_hello_world\x64\Debug\KMDF_hello_world.sys
+  
+  Driver is 'Universal'.
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\bakra\Desktop\Shared\KMDF_hello_world\x64\Debug\KMDF_hello_world\kmdf_hello_world.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\bakra\Desktop\Shared\KMDF_hello_world\x64\Debug\KMDF_hello_world\kmdf_hello_world.cat
+  
